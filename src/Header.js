@@ -1,5 +1,7 @@
 import React from 'react'
 import './Header.css'
+import SearchIcon from '@material-ui/icons/Search';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 
 
 // Header Component for Nav and Search Bar
@@ -14,7 +16,7 @@ function Header () {
      <div className='header__search'>
        <input className="header__searchInput" type='text'>
        </input>
-       {/* logo */}
+       <SearchIcon className="header__searchIcon"/>
      </div>
 
      <div className='header__nav'>
@@ -24,7 +26,7 @@ function Header () {
            Hello Guest
          </span>
          <span className='header__optionLineTwo'>
-          Sign IN
+          Sign In
         </span>
        </div>
 
@@ -45,6 +47,17 @@ function Header () {
         Prime
         </span>
        </div>
+
+     <div className="header_optionBasket">
+       <ShoppingBasketIcon />
+
+       <span className='header__optionLineTwo header_basketCount'>
+          0
+        </span>
+
+     </div>
+
+
 
      </div>
 
