@@ -1,19 +1,35 @@
-
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./Home.js";
 import Header from './Header.js'
-import Home from './Home.js'
+import Checkout from './Checkout.js'
 
-// This is where you add your main components. Home page
+
+
+
+
 function App() {
-  return (
-    // BEM Convention for app
-    <div className="app">
-     <Header/>
-     <Home/>
-     {/*Header */}
-      {/*Home */}
-    </div>
-  );
-}
+return (
+  <Router>
+  <div className="app">
+  <Header/>
 
+      <Switch>
+      <Route path="/checkout">
+
+        <Checkout />
+        </Route>
+
+        <Route path="/">
+          <Home />
+        </Route>
+
+
+      </Switch>
+
+  </div>
+  </Router>
+);
+}
 export default App;
