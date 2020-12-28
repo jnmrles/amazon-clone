@@ -1,9 +1,33 @@
 import React from 'react'
 import './Product.css'
+import { useStateValue } from "./store/StateProvider"
 
 
 
-const  Product =({ title,image, price, rating})=> {
+const  Product =({ id, title,image, price, rating})=> {
+
+  const [{basket}, dispatch] = useStateValue()
+
+
+console.log("this is basket ", basket)
+
+  const addToBasket = () => {
+
+    dispatch({
+      type: 'ADD_TO_BASKET',
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+    },
+
+    });
+
+  }
+
+
 
   const stars = (rate) =>{
     let stars = '';
@@ -29,14 +53,13 @@ const  Product =({ title,image, price, rating})=> {
        </small>
        <strong>{price}</strong>
      </p>
-
      <div className="product_rating">
        <p>{star !== '' ? star: 'No Reviews'}</p>
      </div>
 
    </div>
    <img src={image} alt="" />
-   <button>Add to Basket</button>
+   <button onClick={addToBasket} >Add to Basket</button>
 
   </div>
   )
