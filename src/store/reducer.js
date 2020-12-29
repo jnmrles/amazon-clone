@@ -2,6 +2,10 @@ export const initialState = {
   basket: [],
 }
 
+/// selector function always in your reducer
+export const getBasketTool = (basket) =>{
+  return basket?.reduce((amount, item)=> item.price + amount, 0)
+}
 
 export const reducer =  ( state, action) => {
 
