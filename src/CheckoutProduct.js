@@ -1,8 +1,28 @@
 import React from 'react'
 import './CheckoutProduct.css'
+import { useStateValue } from "./store/StateProvider"
 
 
-function CheckoutProduct ({id, image, title, price, rating}) {
+function CheckoutProduct ({id, image, title, price, rating})
+
+
+{
+  const [{basket}, dispatch] = useStateValue()
+
+  const removeFromBasket = () => {
+    dispatch({
+      type: "REMOVE_FROM_BASKET",
+      item: {
+        id: id,
+
+    },
+
+
+
+
+    });
+
+  }
 
   return(
 
@@ -23,7 +43,7 @@ function CheckoutProduct ({id, image, title, price, rating}) {
         </p>
 
 
-        <button> Remove From Cart</button>
+        <button onClick={removeFromBasket}> Remove From Cart</button>
 
 
 
