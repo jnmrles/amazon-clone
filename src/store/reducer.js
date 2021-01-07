@@ -1,5 +1,6 @@
 export const initialState = {
   basket: [],
+  user: null
 }
 
 /// selector function always in your reducer
@@ -32,6 +33,10 @@ export const reducer =  ( state, action) => {
         return{
           ...state, basket: newBasket
         }
+
+        case "SET_USER":
+          console.log("SETTING USER", action.user)
+          return{...state, user: action.user}
 
 
 
