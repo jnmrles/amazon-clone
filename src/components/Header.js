@@ -18,10 +18,6 @@ function Header () {
     auth.signOut()
    }
 
-
-
-
-
   }
 
   return (
@@ -52,8 +48,7 @@ function Header () {
        </Link>: <Link to={"/"} >
        <div onClick={signOut} className='header__option'>
          <span className='header__optionLineOne'>
-
-           Hello Guest
+{`Hello, ${user.email}`}
          </span>
          <span className='header__optionLineTwo'>
          {user === null?"Sign In":"Sign Out"}
