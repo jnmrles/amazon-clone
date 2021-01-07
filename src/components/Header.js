@@ -4,13 +4,25 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Link } from 'react-router-dom';
 import {useStateValue} from '../store/StateProvider.js'
+import { auth } from './firebase.js'
 
 
 // Header Component for Nav and Search Bar
 
 function Header () {
   // state provider allows to access state from
-  const [{basket}, dispatch] = useStateValue()
+  const [{basket, user}, dispatch] = useStateValue()
+
+  const signOut = (e) => {
+   if(user){
+    auth.signOut()
+   }
+
+
+
+
+
+  }
 
   return (
     <div className='header'>
@@ -27,16 +39,28 @@ function Header () {
      </div>
 
      <div className='header__nav'>
-      <Link to='/login'>
-       <div className='header__option'>
+       {!user? <Link to={"/login"} >
+       <div onClick={signOut} className='header__option'>
          <span className='header__optionLineOne'>
+
            Hello Guest
          </span>
          <span className='header__optionLineTwo'>
-          Sign In
+         {user === null?"Sign In":"Sign Out"}
         </span>
        </div>
-       </Link>
+       </Link>: <Link to={"/"} >
+       <div onClick={signOut} className='header__option'>
+         <span className='header__optionLineOne'>
+
+           Hello Guest
+         </span>
+         <span className='header__optionLineTwo'>
+         {user === null?"Sign In":"Sign Out"}
+        </span>
+       </div>
+       </Link>}
+
 
        <div className='header__option'>
        <span className='header__optionLineOne'>

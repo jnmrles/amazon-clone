@@ -5,11 +5,11 @@ import { useStateValue } from "../store/StateProvider.js"
 
 
 const  Product =({ id, title,image, price, rating})=> {
-
+  // gives component access to the store React Context API
   const [{basket}, dispatch] = useStateValue()
 
 
-console.log("this is basket ", basket)
+
 
   const addToBasket = () => {
 

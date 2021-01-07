@@ -11,12 +11,12 @@ function Login () {
   const [email, setEmail ] = useState('');
   const [password, setPassword] = useState('');
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
-
-
-    auth.signInWithEmailAndPassword(email, password)
+   auth.signInWithEmailAndPassword(email, password)
   .then((user) => {
  console.log('Logged IN')
  history.push('/')
@@ -24,12 +24,30 @@ function Login () {
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    console.error(errorMessage)
+    alert(errorMessage)
   });
 
 
-
 }
+
+
+const register = (e) =>
+{
+  e.preventDefault()
+// firebase auth
+  auth.createUserWithEmailAndPassword(email,password).then(
+    (auth)=>{
+      //if auth is returned, means account was successfully created
+      console.log(auth)
+      if(auth){
+        history.push('/')
+      }
+    }
+  )
+  .catch((err)=>{alert(err.message)})
+}
+
+
 
 
 
@@ -64,7 +82,7 @@ function Login () {
           By signing-in you agree to AMAZON CLONE Conditions of Use & Sale. Please Review All Policies Listed on Our Site.
         </p>
 
-        <button className="login__registerButton"> Create Your Amazon Account</button>
+        <button className="login__registerButton" onClick={register}> Create Your Amazon Account</button>
 
         </div>
 
