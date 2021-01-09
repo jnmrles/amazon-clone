@@ -8,7 +8,11 @@ import Login from './components/Login.js'
 import {auth} from './components/firebase.js'
 import { useStateValue } from "./store/StateProvider.js"
 import Payment from "./components/Payment";
+import {loadStripe} from '@stripe/stripe-js'
+import {Elements} from '@stripe/react-stripe-js'
 
+
+const promise = loadStripe('pk_test_teWRja4PyjtX2iWI4KrEqw6x');
 
 
 // refractor this later to conditionally render Header component
@@ -32,19 +36,12 @@ function App() {
       }
       else{
         dispatch({
-
           type:'SET_USER',
           user: null
-
-
         })
 
       }
     });
-
-
-
-
   }, [])
 
 
@@ -54,29 +51,31 @@ return (
   <div className="app">
 
 
-      <Switch>
+   <Switch>
 
       <Route path='/login'>
         <Login/>
       </Route>
       <Route path="/checkout">
-      <Header/>
-
-        <Checkout />
-        </Route>
-        <Route path="/payment">
-      <Header/>
-
-      <Payment/>
-        </Route>
-
-        <Route path="/">
         <Header/>
-          <Home />
-        </Route>
+        <Checkout />
+      </Route>
+      <Route path="/payment">
+        <Header/>
+
+       {/* Must wrap Payment Component with Stripe Elements */}
+       <Elements stripe={promise}>
+         <Payment/>
+       </Elements>
+      </Route>
+
+     <Route path="/">
+        <Header/>
+        <Home />
+      </Route>
 
 
-      </Switch>
+  </Switch>
 
   </div>
   </Router>

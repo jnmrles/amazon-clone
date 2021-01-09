@@ -1,12 +1,59 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import{useStateValue} from '../store/StateProvider'
 import CheckoutProduct from './CheckoutProduct'
 import './Payment.css'
+import { CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
+import CurrencyFormat from "react-currency-format";
+
+import { getBasketTool } from "../store/reducer";
 
 const Payment = () =>{
 
   const [{basket, user}, dispatch] = useStateValue()
+
+  const stripe = useStripe()
+  const elements = useElements()
+
+  const [error, setError] = useState(null)
+  const [disabled,setDisabled ] = useState(true)
+
+  const [succeeded, setSucceeded] = useState(true)
+  const [processing, setProcessing] = useState(false)
+
+  const [ clientSecret, setClientSecret] = useState(true)
+
+
+  useEffect(() => {
+
+      //generate stripe secret that allows you to capture payment
+      const getClientSecret = async () =>{}
+
+      getClientSecret()
+
+
+  }, [basket])
+
+  const handleChange =  (e) =>{
+
+       // Listen for Changes in Card Elemet
+    // Display any Errors as customer types card details
+    setDisabled(e.empty)
+    setError(e.error ? e.error.message: '')
+  }
+
+  const handleSubmit = async e => {
+    // stripe logic
+    e.preventDefault()
+    setProcessing(true)
+
+
+
+    // const payload = await stripe
+
+  }
+
+
 
 
   return(
@@ -46,10 +93,46 @@ const Payment = () =>{
            }
          </div>
 
-</div>
-<div className='payment__section'>
+    </div>
+     <div className='payment__section'>
+            <h3>
+           Payment Method
+             </h3>
+             <div className='payment__details'>
+               <form onSubmit={handleSubmit}>
+                 <CardElement onChange={handleChange} />
+                <div className='payment__priceContainer'>
+                <CurrencyFormat
 
-</div>
+                renderText={(value) => (
+                  <>
+                  <h3>
+                    Order Total: {value}
+                    </h3>
+
+                  </>
+              )}
+              decimalScale={2}
+              value={getBasketTool(basket)} // Part of the homework
+              displayType={"text"}
+              thousandSeparator={true}
+            prefix={"$"}
+
+          />
+
+            <button disabled={processing || disabled || succeeded }> <span>{processing ? <p>Processing</p>: "Buy Now"}</span></button>
+       </div>
+
+       {error && <div>{error}</div>}
+
+
+      </form>
+
+          </div>
+
+
+
+       </div>
 
 
      </div>
