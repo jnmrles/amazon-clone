@@ -1,12 +1,19 @@
 import React from 'react'
 import './Product.css'
 import { useStateValue } from "../store/StateProvider.js"
+import Zoom from 'react-reveal'
 
 
 
 const  Product =({ id, title,image, price, rating})=> {
   // gives component access to the store React Context API
   const [{basket}, dispatch] = useStateValue()
+
+
+
+
+
+
 
 
 
@@ -41,8 +48,12 @@ const  Product =({ id, title,image, price, rating})=> {
 
   return(
 
+    <Zoom>
 
-  <div className='product'>
+
+
+
+  <  div className='product'>
 
    <div className="product__info">
 
@@ -62,6 +73,7 @@ const  Product =({ id, title,image, price, rating})=> {
    <button onClick={addToBasket} >Add to Basket</button>
 
   </div>
+  </Zoom>
   )
 }
 
