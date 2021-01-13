@@ -11,13 +11,6 @@ const  Product =({ id, title,image, price, rating})=> {
 
 
 
-
-
-
-
-
-
-
   const addToBasket = () => {
 
     dispatch({
@@ -35,7 +28,6 @@ const  Product =({ id, title,image, price, rating})=> {
   }
 
 
-
   const stars = (rate) =>{
     let stars = '';
     while(rate !== 0){
@@ -48,12 +40,9 @@ const  Product =({ id, title,image, price, rating})=> {
 
   return(
 
-    <Zoom>
+<Zoom>
 
-
-
-
-  <  div className='product'>
+  <div className='product'>
 
    <div className="product__info">
 
@@ -73,7 +62,7 @@ const  Product =({ id, title,image, price, rating})=> {
    <button onClick={addToBasket} >Add to Basket</button>
 
   </div>
-  </Zoom>
+</Zoom>
   )
 }
 
