@@ -21,7 +21,7 @@ This project is currently in development. Users can filter tweets by username an
 
 #### Example:   
 
-[ PRETEND SCREEN SHOT IS HERE ]
+![Alt text](../amzn.png?raw=true "Home")
 
 
 [ PRETEND OTHER SCREEN SHOT IS HERE ]
