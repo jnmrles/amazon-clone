@@ -21,7 +21,7 @@ This project is currently in development. Users can filter tweets by username an
 
 #### Example:   
 
-[![amzn.png](https://i.postimg.cc/Fz0ybNRv/amzn.png)](https://postimg.cc/n9c9p8BS)
+[![amzn.png](https://i.postimg.cc/25JhPVLm/amzn.png)](https://postimg.cc/sBYMWfJ0)
 
 
 [ PRETEND OTHER SCREEN SHOT IS HERE ]
