@@ -36,7 +36,7 @@ To Visit App:
 
 ## Reflection 
 
-#### Example:  
+
 This was a week long project where I challenged myself to work with a new stack I wasnt previously familiar with. It was a personal growth test to push myself to build out a popular e-commerce site such as Amazon with React and utilizing the JAMStack with using Firebase cloudfunctions.
 
 I started this process using a create-react-app boilerplate and incorporating state with React Context API.
